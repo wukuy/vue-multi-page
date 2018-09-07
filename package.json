@@ -2,6 +2,7 @@
   "name": "vue-multi-page",
   "version": "1.11",
   "sideEffects": false,
+  "description": "An electron-vue project",
   "scripts": {
     "start": "webpack-dev-server --config build/webpack.dev.js --watch",
     "build-prod": "webpack --config build/webpack.prod.js",
