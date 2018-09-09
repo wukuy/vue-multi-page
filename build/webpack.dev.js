@@ -8,10 +8,11 @@ module.exports = merge(common, {
     devtool: 'none',
     devServer: {
         contentBase: path.join(__dirname, "../dist"),
-        port: 3000,
+        port: 4000,
         openPage: 'module/home/view.html',
         open: true,
-        quiet: true
+        quiet: true,
+        // useLocalIp: true
     },
     plugins: [
         new friendlyErrorsPlugin()

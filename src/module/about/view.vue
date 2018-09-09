@@ -32,7 +32,7 @@ export default {
 @import '~@assets/css/define.styl';
 .p-about{
     span {
-        color: red;
+        color: green;
     }
     img{
         width: 100px;

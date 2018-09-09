@@ -4,7 +4,7 @@
   "sideEffects": false,
   "description": "An electron-vue project",
   "scripts": {
-    "start": "webpack-dev-server --config build/webpack.dev.js --watch",
+    "start": "webpack-dev-server --config build/webpack.dev.js",
     "build-prod": "webpack --config build/webpack.prod.js",
     "build-dev": "webpack --config build/webpack.dev.js"
   },

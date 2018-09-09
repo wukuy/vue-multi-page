@@ -23,8 +23,8 @@ const webpackConfig = {
             {
                 test: /\.styl(us)?$/,
                 use: [
-                    'vue-style-loader',
-                    // MiniCssExtractPlugin.loader,
+                    // 'vue-style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'stylus-loader',
                 ]
@@ -42,27 +42,21 @@ const webpackConfig = {
                 include: path.resolve(__dirname, '../src')
             },
             {
-                test: /\.(png|jpg)$/,
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
-                            name: 'images/[name].[hash:6].[ext]',
-                            outputPath: '/'
+                            limit: 8192,
+                            publicPath: '../../',
+                            name(file) {
+                                let dirName = 'assets/font/';
+                                if(/\.(gif|jpg|png)$/.test(file)) dirName = 'assets/images/';
+
+                                return `${dirName}[name].[hash:6].[ext]`;
+                            }
                         }
-                    }
-                ],
-            },
-            {
-                test:  /\.(eot|svg|ttf|woff|woff2)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: 'font/[name].[hash:6].[ext]',
-                            outputPath: '/'
-                        }
-                    }
+                    },
                 ]
             }
         ]
@@ -82,22 +76,16 @@ const webpackConfig = {
         new webpack.ProvidePlugin({
             _: 'lodash'
         }),
-        new progressBarPlugin()
+        new progressBarPlugin(),
+        new cleanPlugin(['dist/*'], {
+            root: path.resolve(__dirname, '../')
+        })
     ],
     resolve: {
         alias: {
             "@assets": path.resolve(__dirname, '../src/common/assets')
         }
     },
-}
-
-const isWatch = process.argv.includes('--watch');
-if(!isWatch) {
-    webpackConfig.plugins.push(
-        new cleanPlugin(['dist/*'], {
-            root: path.resolve(__dirname, '../')
-        })
-    );
 }
 
 module.exports = webpackConfig;
