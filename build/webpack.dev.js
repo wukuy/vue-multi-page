@@ -1,9 +1,9 @@
 const common = require('./webpack.common');
 const path = require('path');
-const utils = require('./utils.js');
+const friendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const merge = require('webpack-merge');
 
-
-module.exports = Object.assign(common, {
+module.exports = merge(common, {
     mode: 'development',
     devtool: 'none',
     devServer: {
@@ -11,6 +11,9 @@ module.exports = Object.assign(common, {
         port: 3000,
         openPage: 'module/home/view.html',
         open: true,
-        stats: utils.getState()
+        quiet: true
     },
+    plugins: [
+        new friendlyErrorsPlugin()
+    ]
 });

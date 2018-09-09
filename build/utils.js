@@ -23,16 +23,4 @@ module.exports = {
         }
         return httpPlugin;
     },
-    getState() {
-        return {
-            colors: true,
-            assets: false,
-            children: false,
-            entrypoints: false,
-            modules: false,
-            hash: false,
-            version: false,
-            timings: false,
-        }
-    }
 }

@@ -12,6 +12,7 @@
 
 <script>
 import headDefault from '@assets/images/head_default.png';
+console.log(headDefault);
 
 export default {
     data() {

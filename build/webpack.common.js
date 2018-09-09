@@ -23,8 +23,8 @@ const webpackConfig = {
             {
                 test: /\.styl(us)?$/,
                 use: [
-                    // 'vue-style-loader',
-                    MiniCssExtractPlugin.loader,
+                    'vue-style-loader',
+                    // MiniCssExtractPlugin.loader,
                     'css-loader',
                     'stylus-loader',
                 ]
@@ -89,7 +89,6 @@ const webpackConfig = {
             "@assets": path.resolve(__dirname, '../src/common/assets')
         }
     },
-    stats: utils.getState()
 }
 
 const isWatch = process.argv.includes('--watch');
